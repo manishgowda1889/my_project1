@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF6B00;
+  --color-primary-dark: #E66000;
+  --color-primary-light: #FF8533;
+  
+  --color-accent: #FFD700;
+  --color-accent-dark: #CCAC00;
+  --color-accent-light: #FFE033;
+  
+  --color-dark: #111827;
+  --color-dark-lighter: #1F2937;
+  --color-dark-lightest: #374151;
+  
+  --color-light: #F9FAFB;
+  --color-light-darker: #F3F4F6;
+  --color-light-darkest: #E5E7EB;
+
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-body bg-light text-dark transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:pointer-events-none shadow-sm;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-2.5 bg-white text-dark border border-light-darkest font-semibold rounded-lg hover:bg-light-darker transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:pointer-events-none shadow-sm;
+  }
+
+  .btn-accent {
+    @apply px-6 py-2.5 bg-accent text-dark font-semibold rounded-lg hover:bg-accent-dark transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:pointer-events-none shadow-sm;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-light-darkest rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white border border-light-darkest rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Dark Mode Overrides */
+.dark body {
+  @apply bg-dark text-white;
+}
+
+.dark .card {
+  @apply bg-dark-lighter border-dark-lightest;
+}
+
+.dark .btn-secondary {
+  @apply bg-dark-lighter text-white border-dark-lightest hover:bg-dark-lightest;
+}
+
+.dark .input-field {
+  @apply bg-dark-lighter border-dark-lightest text-white focus:ring-primary;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-light-darker;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-light-darkest rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-dark-lightest;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
